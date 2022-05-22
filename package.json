@@ -1,0 +1,17 @@
+{
+  "name": "agi-photos",
+  "version": "1.0.0",
+  "description": "photo tools for websites",
+  "main": "src/agiphotos-old.js",
+  "scripts": {
+    "watch": "webpack watch --mode development",
+    "build": "webpack build --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "g.wojak@aginternet.pl",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  }
+}

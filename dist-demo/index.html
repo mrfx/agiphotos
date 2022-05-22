@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AGI-PHOTOS DEMO</title>
+
+  <style>
+    #slideshow {
+      display: block;
+      position: relative;
+      box-sizing: content-box;
+      width: 100%;
+      overflow-x: hidden;
+      margin: 0;
+      margin-bottom: 20px;
+    }
+    #slideshow span {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: white;
+      color: black;
+    }
+  </style>
+
+</head>
+<body>
+
+  <h1 id="slideshow">
+    <span class="">111</span>
+    <span class="">222</span>
+    <span class="">333</span>
+  </h1>
+
+
+  <div class="agi-gallery" data-gallery="gallery-1">
+    <div data-image="img/001.jpg" data-title="fotka nr 1">fot 1</div>
+    <div data-image="img/002.jpg" data-title="fotka nr 2">fot 2</div>
+    <div data-image="img/003.jpg">fot 3</div>
+    <div data-image="img/004.jpg" data-title="fotka nr 4">fot 4</div>
+  </div>
+
+
+<script src="agiphotos.bundle.js"></script>
+
+</body>
+</html>
