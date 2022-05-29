@@ -3,7 +3,7 @@ let slideshows = {};
 /**
  *
  * @param parentDivID { string }
- * @param options { timeWait, timeFade }
+ * @param options { timeWait, timeFade, resizeParentDiv }
  */
 
 export function slideshowStart( parentDivID = 'slideshow', options = {} ) {
@@ -19,14 +19,16 @@ export function slideshowStart( parentDivID = 'slideshow', options = {} ) {
     let tmFade = Number(options['timeFade']);
     if (!tmFade) { tmFade = 20; }
 
-    const waitForLoadImg = setInterval( ()=>{
-      const h = window.getComputedStyle(els[0]).height;
-      if (h && h !== '0px') {
-        const d = document.getElementById(parentDivID);
-        d.style.height = h;
-        clearInterval(waitForLoadImg);
-      }
-    }, 10);
+    if (options['resizeParentDiv']) {
+      const waitForLoadImg = setInterval( ()=>{
+        const h = window.getComputedStyle(els[0]).height;
+        if (h && h !== '0px') {
+          const d = document.getElementById(parentDivID);
+          d.style.height = h;
+          clearInterval(waitForLoadImg);
+        }
+      }, 10);
+    }
 
 
     for (const el of els) {
