@@ -87,7 +87,7 @@ export function galleryZoom(parentClassName = 'agi-gallery', options = {}) {
   const agzc = document.getElementById('agizoom-close');
   agzc.style.display = 'block';
   agzc.style.position = 'absolute';
-  agzc.style.right = '0';
+  agzc.style.right = '25px';
   agzc.style.top = '25px';
   agzc.style.color = 'white';
   agzc.style.fontSize = '4rem';
