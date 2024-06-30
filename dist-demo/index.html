@@ -13,6 +13,7 @@
       overflow-x: hidden;
       margin: 0;
       margin-bottom: 20px;
+      height: 180px;
     }
     #slideshow span {
       display: block;
@@ -28,6 +29,21 @@
       width: 300px;
       height: 180px;
     }
+
+    .agi-gallery div {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      position: relative;
+      min-width: 100px;
+      min-height: 100px;
+      padding: 5px;
+      margin-bottom: 5px;
+      border: 1px solid grey;
+
+    }
+
   </style>
 
 </head>
@@ -41,14 +57,33 @@
 
 
   <div class="agi-gallery" data-gallery="gallery-1">
-    <div data-image="img/001.jpg" data-title="fotka nr 1">fot 1</div>
+    <div id="film1"
+         data-nozoom="true"
+         data-movie="true"
+         data-clickfn="zoomYoutube"
+         data-image="img/001.jpg"
+         data-title="fotka nr 1">fot 1</div>
     <div data-image="img/002.jpg" data-title="fotka nr 2">fot 2</div>
     <div data-image="img/003.jpg">fot 3</div>
     <div data-image="img/004.jpg" data-title="fotka nr 4">fot 4</div>
   </div>
 
 
+<script>
+  let agiphotosCustomFunctions = {
+    zoomYoutube: function ( ev ) {
+      console.info('hi i am custom script clicked', ev);
+    }
+  }
+</script>
 <script src="agiphotos.bundle.js"></script>
+<script>
+  const options = {
+    'timeWait': 5000,
+    'timeFade': 1
+  }
+  AGIslideshowStart('slideshow', options);
+</script>
 
 </body>
 </html>

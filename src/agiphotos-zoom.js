@@ -11,6 +11,9 @@ const closeIcon = `<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi b
   <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.146-3.146a.5.5 0 0 0-.708-.708L8 7.293 4.854 4.146a.5.5 0 1 0-.708.708L7.293 8l-3.147 3.146a.5.5 0 0 0 .708.708L8 8.707l3.146 3.147a.5.5 0 0 0 .708-.708L8.707 8l3.147-3.146z"/>
 </svg>`;
 
+const playIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-play-btn-fill" viewBox="0 0 16 16">
+  <path d="M0 12V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm6.79-6.907A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+</svg>`;
 
 
 export function galleryZoom(parentClassName = 'agi-gallery', options = {}) {
@@ -38,7 +41,7 @@ export function galleryZoom(parentClassName = 'agi-gallery', options = {}) {
   agiZoom.style.left = 0;
   agiZoom.style.width = '100vw';
   agiZoom.style.height = '100vh';
-  agiZoom.style.zIndex = '999';
+  agiZoom.style.zIndex = '2000';
   document.body.appendChild(agiZoom);
   agiZoom.innerHTML = zhtml;
   const bg = document.getElementById('agiZoomBg');
@@ -110,7 +113,32 @@ export function galleryZoom(parentClassName = 'agi-gallery', options = {}) {
 
 
   parentDivs.forEach( (el)=> {
-    const photos = [ ...el.children ];
+    let photos = [ ...el.children ];
+    for(let i=0;i<photos.length;i++) {
+      if(photos[i].dataset.movie === "true") {
+        console.info('p',photos[i]);
+        let n  = document.createElement('span');
+        n.innerHTML = playIcon;
+        n.setAttribute('class', 'agiZoomPlayIcon');
+        n.style.position = 'absolute';
+        n.style.display = 'block';
+        n.style.left = 'calc(50% - 20px)';
+        n.style.top = 'calc(50% - 15px)';
+        photos[i].appendChild(n);
+      }
+      if(photos[i].dataset.clickfn) {
+        const fnName = photos[i].dataset.clickfn;
+        console.info('fnName', fnName);
+        if (typeof fnName === 'string') {
+          photos[i].style.cursor = 'pointer';
+          photos[i].addEventListener('click', agiphotosCustomFunctions[fnName]);
+        }
+      }
+      if(photos[i].dataset.nozoom === "true") {
+        photos.splice(i,1);
+
+      }
+    }
     const dg =  el.dataset.gallery;
     if (typeof galleries[dg] === "undefined") {
       galleries[dg] = [];

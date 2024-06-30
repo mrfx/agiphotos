@@ -1,6 +1,6 @@
 {
   "name": "agi-photos",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "photo tools for websites",
   "main": "src/agiphotos-old.js",
   "scripts": {
